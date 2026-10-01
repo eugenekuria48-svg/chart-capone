@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eugenekuria48-svg.github.io/chart-capone/sitemap.xml
