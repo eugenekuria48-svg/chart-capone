@@ -416,3 +416,96 @@ h1, h2, h3, .serif { font-family: var(--serif); font-weight: 600; letter-spacing
   transform: scale(1.08);
   box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
 }
+
+/* =========================
+   FOUNDER SECTION
+========================= */
+
+.founder-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.founder-image {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  background: var(--bg-2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.founder-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.founder-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.founder-image:hover img {
+  transform: scale(1.03);
+}
+
+.founder-content {
+  max-width: 650px;
+}
+
+.founder-signature {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--gold-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.founder-signature span {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+
+.founder-signature small {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .founder-section {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .founder-image {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .founder-content {
+    max-width: 100%;
+  }
+
+}
