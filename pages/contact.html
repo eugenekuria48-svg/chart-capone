@@ -176,6 +176,92 @@
     }
 
 
+
+    /* =========================================================
+       MOBILE HAMBURGER MENU
+       ========================================================= */
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      background: rgba(0,0,0,0.65);
+      cursor: pointer;
+      padding: 9px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+      z-index: 1101;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      z-index: 1100;
+      background: rgba(5,5,5,0.98);
+      border-bottom: 1px solid rgba(214,168,46,0.45);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.55);
+      padding: 12px 6%;
+      flex-direction: column;
+      max-height: calc(100vh - 65px);
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      padding: 14px 4px;
+      color: #ddd;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(214,168,46,0.12);
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: var(--gold-light);
+    }
+
+    .mobile-menu .mobile-vip {
+      margin: 12px 0 4px;
+      text-align: center;
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      color: var(--gold-light);
+    }
+
     /* =========================================================
        HERO
        ========================================================= */
@@ -802,6 +888,10 @@
         display: none;
       }
 
+      .nav-toggle {
+        display: flex;
+      }
+
       .nav-logo {
         width: auto;
       }
@@ -928,9 +1018,33 @@
       Join VIP
     </a>
 
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
 
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="services.html">Services</a>
+  <a href="vip.html">VIP</a>
+  <a href="insights.html">Market Insights</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="vip.html" class="mobile-vip">Join VIP</a>
+</div>
 
 
 
@@ -1410,6 +1524,44 @@
 </a>
 
 
+
+
+<!-- =========================================================
+     MOBILE NAVIGATION SCRIPT
+     ========================================================= -->
+<script>
+  const navToggle = document.getElementById("navToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener("click", function () {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navToggle.classList.toggle("active", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.remove("open");
+        navToggle.classList.remove("active");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 760) {
+        mobileMenu.classList.remove("open");
+        navToggle.classList.remove("active");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+</script>
 
 <!-- =========================================================
      WHATSAPP FORM SCRIPT
