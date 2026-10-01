@@ -1,163 +1,1473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Contact | Chart Capone</title>
-  <meta name="description" content="Get in touch with Chart Capone." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="icon" href="../images/logo.jpeg" type="image/jpeg" />
+
+  <meta name="description"
+        content="Get in touch with Chart Capone for trading signals, mentorship and account management.">
+
+  <link rel="icon" href="../images/logo.jpeg" type="image/jpeg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <style>
+
+    /* =========================================================
+       CHART CAPONE - CONTACT PAGE
+       SELF CONTAINED STYLES
+       ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #050505;
+      --black-2: #0a0a0a;
+      --black-3: #111111;
+
+      --gold: #d6a82e;
+      --gold-light: #f4cc58;
+      --gold-dark: #8f6a12;
+
+      --white: #ffffff;
+      --muted: #aaa7a0;
+
+      --border: rgba(214, 168, 46, 0.35);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    .navbar {
+      height: 62px;
+      background: rgba(3, 3, 3, 0.96);
+      border-bottom: 1px solid rgba(214, 168, 46, 0.35);
+      position: relative;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      width: min(1410px, 94%);
+      height: 100%;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      width: 190px;
+    }
+
+    .nav-logo img {
+      width: 175px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      flex: 1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ddd;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+
+      height: 62px;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-light);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(214, 168, 46, 0.45);
+    }
+
+    .nav-search {
+      width: 45px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-search svg {
+      width: 21px;
+      height: 21px;
+      stroke: white;
+    }
+
+    .vip-button {
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+
+      padding: 12px 34px;
+
+      color: var(--gold-light);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      transition: 0.25s ease;
+    }
+
+    .vip-button:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 20px rgba(214, 168, 46, 0.25);
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 325px;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.94) 0%,
+          rgba(0,0,0,0.84) 32%,
+          rgba(0,0,0,0.35) 65%,
+          rgba(0,0,0,0.75) 100%
+        ),
+        url("../images/contact-bg.jpg") center/cover no-repeat;
+
+      border-bottom: 1px solid rgba(214, 168, 46, 0.45);
+    }
+
+    /*
+      IMPORTANT:
+      Put your contact background image here:
+
+      images/contact-bg.jpg
+
+      If your image has another name, change the path above.
+    */
+
+    .hero-content {
+      width: min(1410px, 94%);
+      margin: auto;
+    }
+
+    .hero-label {
+      color: var(--gold-light);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(54px, 5vw, 82px);
+
+      line-height: 0.95;
+
+      text-transform: uppercase;
+
+      letter-spacing: -0.025em;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero-description {
+      max-width: 580px;
+
+      color: #e0e0e0;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 17px;
+
+      line-height: 1.35;
+    }
+
+
+    /* =========================================================
+       HERO FEATURES
+       ========================================================= */
+
+    .hero-features {
+      display: flex;
+
+      align-items: center;
+
+      gap: 25px;
+
+      margin-top: 27px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .feature svg {
+      width: 27px;
+      height: 27px;
+
+      stroke: var(--gold-light);
+      fill: none;
+
+      stroke-width: 1.5;
+    }
+
+    .feature span {
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.04em;
+
+      text-transform: uppercase;
+    }
+
+    .feature-divider {
+      width: 1px;
+      height: 20px;
+
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+
+    /* =========================================================
+       MAIN CONTACT AREA
+       ========================================================= */
+
+    .contact-area {
+      width: min(1220px, 90%);
+
+      margin: 20px auto 45px;
+
+      display: grid;
+
+      grid-template-columns: minmax(0, 1fr) 310px;
+
+      gap: 28px;
+
+      align-items: stretch;
+    }
+
+
+    /* =========================================================
+       CONTACT FORM
+       ========================================================= */
+
+    .form-card {
+      border: 1px solid rgba(214, 168, 46, 0.45);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(18,18,18,0.94),
+          rgba(4,4,4,0.96)
+        );
+
+      padding: 20px;
+
+      box-shadow:
+        inset 0 0 35px rgba(214, 168, 46, 0.025),
+        0 12px 45px rgba(0,0,0,0.45);
+    }
+
+    .form-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 17px;
+    }
+
+    .form-group {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      border: 1px solid rgba(214, 168, 46, 0.35);
+
+      background: #161616;
+
+      color: white;
+
+      border-radius: 5px;
+
+      padding: 10px 13px;
+
+      font-family: "Inter", sans-serif;
+
+      font-size: 12px;
+
+      outline: none;
+
+      transition: 0.2s ease;
+    }
+
+    input,
+    select {
+      height: 37px;
+    }
+
+    textarea {
+      height: 75px;
+
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #666;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold-light);
+
+      box-shadow:
+        0 0 0 2px rgba(214, 168, 46, 0.07);
+    }
+
+    select {
+      appearance: auto;
+      color: #aaa;
+    }
+
+    .form-bottom {
+      margin-top: 17px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 28px;
+    }
+
+    .send-button {
+      height: 37px;
+
+      min-width: 228px;
+
+      border: none;
+
+      border-radius: 5px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f2c94c,
+          #d49d19
+        );
+
+      color: #090909;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.05em;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 10px;
+
+      box-shadow:
+        0 4px 16px rgba(214, 168, 46, 0.18);
+
+      transition: 0.25s ease;
+    }
+
+    .send-button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 25px rgba(214, 168, 46, 0.3);
+    }
+
+    .send-button svg {
+      width: 18px;
+      height: 18px;
+
+      fill: none;
+
+      stroke: #111;
+
+      stroke-width: 2;
+    }
+
+    .form-note {
+      color: #8b8b8b;
+
+      font-size: 10px;
+    }
+
+
+    /* =========================================================
+       CONTACT INFORMATION
+       ========================================================= */
+
+    .contact-info {
+      border: 1px solid rgba(214, 168, 46, 0.4);
+
+      padding: 20px 22px;
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(12,12,12,0.97),
+          rgba(4,4,4,0.98)
+        );
+    }
+
+    .info-eyebrow {
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.2em;
+
+      margin-bottom: 4px;
+    }
+
+    .contact-info h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 18px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 20px;
+    }
+
+    .info-item {
+      display: flex;
+
+      gap: 13px;
+
+      margin-bottom: 17px;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+
+      width: 28px;
+      height: 28px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--gold);
+
+      border-radius: 50%;
+    }
+
+    .info-icon svg {
+      width: 15px;
+      height: 15px;
+
+      stroke: var(--gold-light);
+
+      fill: none;
+
+      stroke-width: 1.7;
+    }
+
+    .info-item small {
+      display: block;
+
+      color: #bdbdbd;
+
+      font-size: 10px;
+
+      margin-bottom: 2px;
+    }
+
+    .info-item strong {
+      color: white;
+
+      font-size: 11px;
+
+      font-weight: 500;
+
+      line-height: 1.35;
+    }
+
+    .info-divider {
+      height: 1px;
+
+      background: rgba(214, 168, 46, 0.45);
+
+      margin: 7px 0 14px;
+    }
+
+    .follow-title {
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      font-weight: 700;
+
+      letter-spacing: 0.14em;
+
+      margin-bottom: 10px;
+    }
+
+    .socials {
+      display: flex;
+
+      gap: 8px;
+    }
+
+    .socials a {
+      width: 27px;
+      height: 27px;
+
+      border: 1px solid rgba(214, 168, 46, 0.75);
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      color: var(--gold-light);
+
+      transition: 0.25s ease;
+    }
+
+    .socials a:hover {
+      background: var(--gold);
+
+      color: #000;
+
+      transform: translateY(-2px);
+    }
+
+    .socials svg {
+      width: 14px;
+      height: 14px;
+
+      fill: currentColor;
+    }
+
+    .contact-signature {
+      margin-top: 23px;
+
+      text-align: right;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 24px;
+
+      font-style: italic;
+
+      color: var(--gold-light);
+    }
+
+    .contact-tagline {
+      text-align: right;
+
+      margin-top: 3px;
+
+      color: #ddd;
+
+      font-size: 7px;
+
+      letter-spacing: 0.38em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       WHATSAPP FLOAT
+       ========================================================= */
+
+    .whatsapp {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      width: 54px;
+      height: 54px;
+
+      background: #25D366;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      z-index: 500;
+
+      box-shadow:
+        0 5px 25px rgba(0,0,0,0.5);
+
+      transition: 0.25s ease;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    .whatsapp svg {
+      width: 29px;
+      height: 29px;
+
+      fill: white;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-logo {
+        width: 150px;
+      }
+
+      .nav-logo img {
+        width: 145px;
+      }
+
+      .contact-area {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        column-gap: 30px;
+      }
+
+      .contact-info h2,
+      .info-eyebrow {
+        grid-column: 1 / -1;
+      }
+
+      .info-divider,
+      .follow-title,
+      .socials,
+      .contact-signature,
+      .contact-tagline {
+        grid-column: 1 / -1;
+      }
+    }
+
+
+    @media (max-width: 760px) {
+
+      .navbar {
+        height: 65px;
+      }
+
+      .nav-inner {
+        justify-content: space-between;
+      }
+
+      .nav-links,
+      .nav-search,
+      .vip-button {
+        display: none;
+      }
+
+      .nav-logo {
+        width: auto;
+      }
+
+      .nav-logo img {
+        width: 150px;
+      }
+
+      .hero {
+        min-height: 400px;
+
+        background-position: center;
+      }
+
+      .hero-content {
+        width: 88%;
+      }
+
+      .hero h1 {
+        font-size: 53px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-features {
+        flex-wrap: wrap;
+
+        gap: 12px 18px;
+      }
+
+      .feature-divider {
+        display: none;
+      }
+
+      .contact-area {
+        width: 92%;
+
+        margin-top: 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .form-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+      }
+
+      .send-button {
+        width: 100%;
+      }
+
+      .contact-info {
+        display: block;
+      }
+
+      .contact-signature,
+      .contact-tagline {
+        text-align: left;
+      }
+    }
+
+  </style>
 </head>
+
+
 <body>
-  <header class="navbar" id="navbar"><div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><img src="../images/logo.jpeg" alt="Chart Capone" /></a>
-    <nav class="nav-links"><a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="services.html">Services</a><a href="vip.html">VIP</a><a href="insights.html">Market Insights</a><a href="contact.html" class="active">Contact</a></nav>
-    <a href="vip.html" class="btn btn-primary nav-cta">Join VIP</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-  </div></header>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="services.html">Services</a><a href="vip.html">VIP</a><a href="examples.html">Live Examples</a><a href="insights.html">Market Insights</a><a href="mentorship.html">Mentorship</a><a href="account-management.html">Account Management</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
-    <a href="vip.html" class="btn btn-primary" style="margin-top:1rem">Join VIP</a>
-  </div>
-  <section class="page-hero"><div class="container"><p class="eyebrow">Contact</p><h1>Let's Talk.</h1><p>Have a question about signals, mentorship or account management? Reach out — your message will open in WhatsApp.</p></div></section>
-  <section class="section"><div class="container" style="max-width:700px;margin:0 auto">
-    <form>
-      <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="Name" required /></div>
-      <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="Email" required /></div>
-      <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="Phone" /></div>
-      <div class="form-group">
-        <label for="service">Service Interested In</label>
-        <select id="service" name="Service">
-          <option value="">Select...</option>
-          <option>Free Weekly Signals</option>
-          <option>Premium Signals</option>
-          <option>Account Management</option>
-          <option>Mentorship</option>
-          <option>General Question</option>
-        </select>
-      </div>
-      <div class="form-group"><label for="message">Message</label><textarea id="message" name="Message" required></textarea></div>
-      <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
-    </form>
-    <div style="margin-top:2rem;color:var(--text-muted)">
-      <p><strong>WhatsApp:</strong> 0748 021 671</p>
-      <p><strong>Email:</strong> <a href="mailto:eugenekuria48@gmail.com" style="color:var(--gold)">eugenekuria48@gmail.com</a></p>
-      <p><strong>Location:</strong> Nairobi, Kenya</p>
-      <p style="margin-top:1rem">
-        <a href="https://www.youtube.com/@Chartcapone-n8v" target="_blank" rel="noopener" style="color:var(--gold);margin-right:1rem">YouTube</a>
-        <a href="https://www.instagram.com/chartcapone/" target="_blank" rel="noopener" style="color:var(--gold);margin-right:1rem">Instagram</a>
-        <a href="https://www.tiktok.com/@user56232747471242" target="_blank" rel="noopener" style="color:var(--gold)">TikTok</a>
-      </p>
+
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
+<header class="navbar">
+
+  <div class="nav-inner">
+
+    <a href="../index.html" class="nav-logo">
+      <img src="../images/logo.jpeg" alt="Chart Capone">
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="../index.html">Home</a>
+
+      <a href="about.html">About</a>
+
+      <a href="education.html">Education</a>
+
+      <a href="services.html">Services</a>
+
+      <a href="vip.html">VIP</a>
+
+      <a href="insights.html">Market Insights</a>
+
+      <a href="contact.html" class="active">Contact</a>
+
+    </nav>
+
+
+    <!-- Search -->
+
+    <div class="nav-search">
+
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="11" cy="11" r="6.5"/>
+        <path d="M16 16L21 21"/>
+      </svg>
+
     </div>
-  </div></section>
-  <footer class="footer"><div class="container"><div class="footer-bottom" style="border:none;padding-top:0">
-    <span>© 2026 Chart Capone. All rights reserved.</span>
+
+
+    <a href="vip.html" class="vip-button">
+      Join VIP
+    </a>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-label">
+      Contact
+    </div>
+
+    <h1>
+      Let's <span>Talk.</span>
+    </h1>
+
+    <p class="hero-description">
+      Have a question about signals, mentorship or account management?
+      Reach out — your message will open in WhatsApp.
+    </p>
+
+
+    <div class="hero-features">
+
+      <!-- Fast Response -->
+
+      <div class="feature">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20 11.5a8 8 0 0 1-12.7 6.4L4 19l1.1-3.2A8 8 0 1 1 20 11.5Z"/>
+          <path d="M8 10.5h8M8 13.5h5"/>
+        </svg>
+
+        <span>Fast Response</span>
+
+      </div>
+
+
+      <div class="feature-divider"></div>
+
+
+      <!-- Professional Support -->
+
+      <div class="feature">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3l8 3v5c0 5-3.5 8.3-8 10-4.5-1.7-8-5-8-10V6l8-3Z"/>
+          <path d="m8.5 12 2.2 2.2 4.8-5"/>
+        </svg>
+
+        <span>Professional Support</span>
+
+      </div>
+
+
+      <div class="feature-divider"></div>
+
+
+      <!-- Real People -->
+
+      <div class="feature">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3l2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2-4.2 2.2.8-4.7-3.4-3.3 4.7-.7L12 3Z"/>
+          <path d="M5 21c.6-2.6 2.6-4 5-4M19 21c-.6-2.6-2.6-4-5-4"/>
+        </svg>
+
+        <span>Real People</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT AREA
+     ========================================================= -->
+
+<section class="contact-area">
+
+
+  <!-- =======================================================
+       FORM
+       ======================================================= -->
+
+  <div class="form-card">
+
+    <form id="contactForm">
+
+      <div class="form-grid">
+
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+          <label for="name">
+            Name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            required
+          >
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+          <label for="phone">
+            Phone
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter your phone number"
+          >
+
+        </div>
+
+
+        <!-- SERVICE -->
+
+        <div class="form-group">
+
+          <label for="service">
+            Service Interested In
+          </label>
+
+          <select id="service">
+
+            <option value="">
+              Select a service
+            </option>
+
+            <option>
+              Free Weekly Signals
+            </option>
+
+            <option>
+              Premium Signals
+            </option>
+
+            <option>
+              Account Management
+            </option>
+
+            <option>
+              Mentorship
+            </option>
+
+            <option>
+              General Question
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="form-group full">
+
+          <label for="message">
+            Message
+          </label>
+
+          <textarea
+            id="message"
+            placeholder="Type your message here..."
+            required
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- BUTTON -->
+
+      <div class="form-bottom">
+
+        <button
+          type="submit"
+          class="send-button"
+        >
+
+          <svg viewBox="0 0 24 24">
+            <path d="M20 4H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/>
+          </svg>
+
+          Send Message
+
+        </button>
+
+
+        <span class="form-note">
+          We'll get back to you as soon as possible.
+        </span>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       CONTACT INFORMATION
+       ======================================================= -->
+
+  <aside class="contact-info">
+
+    <div class="info-eyebrow">
+      Get In Touch
+    </div>
+
+    <h2>
+      Contact Information
+    </h2>
+
+
+    <!-- WHATSAPP -->
+
+    <div class="info-item">
+
+      <div class="info-icon">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20 11.5a8 8 0 0 1-12.7 6.4L4 19l1.1-3.2A8 8 0 1 1 20 11.5Z"/>
+          <path d="M8 9.5c.5 2.4 2.2 4 4.5 5M8.5 9.5l1-1M15.5 14.5l1-1"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <small>WhatsApp / Phone</small>
+
+        <strong>
+          +254 748 021 671
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="info-item">
+
+      <div class="info-icon">
+
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="m3 7 9 6 9-6"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <small>Email</small>
+
+        <strong>
+          eugenekuria48@gmail.com
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="info-item">
+
+      <div class="info-icon">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/>
+          <circle cx="12" cy="9" r="2.2"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <small>Location</small>
+
+        <strong>
+          Nairobi, Kenya
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="info-divider"></div>
+
+
+    <!-- SOCIAL MEDIA -->
+
+    <div class="follow-title">
+      Follow Us
+    </div>
+
     <div class="socials">
 
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@Chartcapone-n8v"
-     target="_blank"
-     rel="noopener"
-     aria-label="YouTube"
-     title="YouTube">
 
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8ZM9.6 15.8V8.2L16 12l-6.4 3.8Z"/>
-    </svg>
+      <!-- YouTube -->
 
-  </a>
+      <a
+        href="https://www.youtube.com/@Chartcapone-n8v"
+        target="_blank"
+        rel="noopener"
+        aria-label="YouTube"
+        title="YouTube"
+      >
 
+        <svg viewBox="0 0 24 24">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8ZM9.6 15.8V8.2L16 12l-6.4 3.8Z"/>
+        </svg>
 
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/chartcapone/"
-     target="_blank"
-     rel="noopener"
-     aria-label="Instagram"
-     title="Instagram">
-
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"/>
-    </svg>
-
-  </a>
+      </a>
 
 
-  <!-- TikTok -->
-  <a href="https://www.tiktok.com/@user56232747471242"
-     target="_blank"
-     rel="noopener"
-     aria-label="TikTok"
-     title="TikTok">
+      <!-- Instagram -->
 
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M19.6 7.1a5.8 5.8 0 0 1-3.5-1.2v7.3a5.8 5.8 0 1 1-5.8-5.8c.3 0 .7 0 1 .1v2.9a2.9 2.9 0 1 0 1.9 2.8V2h2.9c.2 1.7 1.5 3 3.2 3.2v1.9h.3Z"/>
-    </svg>
+      <a
+        href="https://www.instagram.com/chartcapone/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+        title="Instagram"
+      >
 
-  </a>
+        <svg viewBox="0 0 24 24">
+
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 0 0 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25Z"/>
+
+        </svg>
+
+      </a>
 
 
-  <!-- Email -->
-  <a href="mailto:eugenekuria48@gmail.com"
-     aria-label="Email"
-     title="Email">
+      <!-- X -->
 
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-    </svg>
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener"
+        aria-label="X"
+        title="X"
+      >
 
-  </a>
+        <svg viewBox="0 0 24 24">
 
-</div>
+          <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.48 22H3.36l7.24-8.28L2.8 2h6.4l4.42 5.84L18.9 2Zm-1.09 17.99h1.73L8.28 3.9H6.42l11.39 16.09Z"/>
 
-<style>
-  .socials {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+        </svg>
 
-  .socials a {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    border: 1px solid var(--gold-border);
-    border-radius: 50%;
-    text-decoration: none;
-    transition: all 0.25s ease;
-  }
+      </a>
 
-  .socials a svg {
-    width: 19px;
-    height: 19px;
-    fill: currentColor;
-  }
 
-  .socials a:hover {
-    color: var(--gold);
-    border-color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.2);
-  }
+      <!-- TikTok -->
 
-  .socials a:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-  }
-</style>
-  </div></div></footer>
-  <script src="../js/main.js"></script>
+      <a
+        href="https://www.tiktok.com/@user56232747471242"
+        target="_blank"
+        rel="noopener"
+        aria-label="TikTok"
+        title="TikTok"
+      >
 
-  <a href="https://wa.me/254748021671?text=Hi%20Chart%20Capone%2C%20I%27m%20interested%20in%20signals" 
-   class="wa-float" 
-   target="_blank" 
-   rel="noopener" 
-   aria-label="Chat on WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        <svg viewBox="0 0 24 24">
+
+          <path d="M19.6 7.1a5.8 5.8 0 0 1-3.5-1.2v7.3a5.8 5.8 0 1 1-5.8-5.8c.3 0 .7 0 1 .1v2.9a2.9 2.9 0 1 0 1.9 2.8V2h2.9c.2 1.7 1.5 3 3.2 3.2v1.9h.3Z"/>
+
+        </svg>
+
+      </a>
+
+
+      <!-- Telegram -->
+
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener"
+        aria-label="Telegram"
+        title="Telegram"
+      >
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M21.4 3.3 2.7 10.5c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.5c.2.6.1.8.7.8.5 0 .7-.2 1-.4l2.3-2.2 4.8 3.5c.9.5 1.6.3 1.8-.8l3.2-15.2c.3-1.4-.5-2-1.5-1.4ZM8.1 13.1l10.9-6.9c.5-.3 1-.1.6.2l-8.8 8-.3 3.1-1.4-4.4-1-.3Z"/>
+
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <div class="contact-signature">
+      Chart Capone
+    </div>
+
+    <div class="contact-tagline">
+      Trade | Learn | Grow
+    </div>
+
+  </aside>
+
+</section>
+
+
+
+<!-- =========================================================
+     WHATSAPP FLOATING BUTTON
+     ========================================================= -->
+
+<a
+  href="https://wa.me/254748021671?text=Hi%20Chart%20Capone%2C%20I%27m%20interested%20in%20your%20services."
+  class="whatsapp"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat with Chart Capone on WhatsApp"
+>
+
+  <svg viewBox="0 0 24 24">
+
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.198-.198.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z"/>
+
+    <path d="M12 22a10 10 0 0 1-5.02-1.35L2 22l1.38-4.82A10 10 0 1 1 12 22Z"/>
+
   </svg>
+
 </a>
+
+
+
+<!-- =========================================================
+     WHATSAPP FORM SCRIPT
+     ========================================================= -->
+
+<script>
+
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const service =
+        document.getElementById("service").value;
+
+      const message =
+        document.getElementById("message").value.trim();
+
+
+      const whatsappMessage =
+`Hello Chart Capone,
+
+I would like to get in touch.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+Service: ${service || "General Question"}
+
+Message:
+${message}`;
+
+
+      const whatsappURL =
+        "https://wa.me/254748021671?text=" +
+        encodeURIComponent(whatsappMessage);
+
+
+      window.open(
+        whatsappURL,
+        "_blank",
+        "noopener"
+      );
+
+    });
+
+</script>
+
+
 </body>
 </html>
