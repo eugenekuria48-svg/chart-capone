@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -598,7 +598,21 @@
     .edu-expandable {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      height: auto;
+      align-self: start;
+    }
+
+    /* Keep collapsed cards compact. They only grow when Read More is clicked. */
+    .edu-grid {
+      align-items: start;
+    }
+
+    .edu-expandable .edu-details {
+      height: 0;
+    }
+
+    .edu-expandable.is-open .edu-details {
+      height: auto;
     }
 
     .edu-expandable > p {
@@ -647,24 +661,18 @@
     }
 
     .edu-details {
-      display: grid;
-      grid-template-rows: 0fr;
+      max-height: 0;
       opacity: 0;
       overflow: hidden;
-      transition:
-        grid-template-rows .45s ease,
-        opacity .3s ease,
-        margin-top .45s ease;
       margin-top: 0;
-    }
-
-    .edu-details > * {
-      min-height: 0;
-      overflow: hidden;
+      transition:
+        max-height .5s ease,
+        opacity .25s ease,
+        margin-top .35s ease;
     }
 
     .edu-expandable.is-open .edu-details {
-      grid-template-rows: 1fr;
+      max-height: 2500px;
       opacity: 1;
       margin-top: .35rem;
     }
@@ -808,29 +816,44 @@
   <script>
     /*
       Education card accordion.
-      Only one lesson is expanded at a time to keep the page clean,
-      especially on mobile.
+      Cards stay compact while collapsed and expand only when opened.
+      Only one lesson is expanded at a time.
     */
     document.querySelectorAll(".read-more-btn").forEach((button) => {
       button.addEventListener("click", () => {
         const card = button.closest(".edu-expandable");
+        const details = card.querySelector(".edu-details");
         const isOpen = card.classList.contains("is-open");
 
         document.querySelectorAll(".edu-expandable.is-open").forEach((openCard) => {
+          if (openCard === card) return;
+
           openCard.classList.remove("is-open");
+
           const openButton = openCard.querySelector(".read-more-btn");
+          const openDetails = openCard.querySelector(".edu-details");
+
           openButton.setAttribute("aria-expanded", "false");
           openButton.querySelector("span:first-child").textContent = "Read More";
+          openDetails.style.maxHeight = "0px";
         });
 
-        if (!isOpen) {
+        if (isOpen) {
+          card.classList.remove("is-open");
+          button.setAttribute("aria-expanded", "false");
+          button.querySelector("span:first-child").textContent = "Read More";
+          details.style.maxHeight = "0px";
+        } else {
           card.classList.add("is-open");
           button.setAttribute("aria-expanded", "true");
           button.querySelector("span:first-child").textContent = "Read Less";
+
+          // Allow the browser to calculate the actual content height.
+          details.style.maxHeight = details.scrollHeight + "px";
         }
       });
     });
-  </script>
+    </script>
 
   <a href="https://wa.me/254748021671?text=Hi%20Chart%20Capone%2C%20I%27m%20interested%20in%20signals"
      class="wa-float"
@@ -842,4 +865,3 @@
     </svg>
   </a>
 </body>
-</html>
